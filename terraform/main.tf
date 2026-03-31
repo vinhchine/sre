@@ -38,3 +38,11 @@ resource "aws_route_table_association" "subnet_2_assoc" {
   subnet_id      = aws_subnet.subnet_2.id
   route_table_id = aws_route_table.public_rt.id
 }
+terraform {
+  backend "s3" {
+    bucket         = "sre-terraform-state-vinh"
+    key            = "ecs-app/terraform.tfstate"
+    region         = "ap-southeast-1"
+    dynamodb_table = "terraform-lock"
+  }
+}
