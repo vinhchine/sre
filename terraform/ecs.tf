@@ -7,7 +7,7 @@ resource "aws_ecs_task_definition" "task" {
   requires_compatibilities = ["FARGATE"]
   cpu    = "256"
   memory = "512"
-  execution_role_arn = "arn:aws:iam::668764275271:role/ecsTaskExecutionRole"
+  execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
   network_mode = "awsvpc"
 
   container_definitions = jsonencode([
