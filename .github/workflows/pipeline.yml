@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
 
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Image tag for rollback (leave empty for new build)"
+        required: false
 env:
   AWS_REGION: ap-southeast-1
   ECR_REPO: myapp
