@@ -23,6 +23,9 @@ resource "aws_ecs_task_definition" "task" {
       ]
     }
   ])
+  lifecycle {
+    create_before_destroy = true   # 🔥 KEY FIX
+  }
 }
 
 resource "aws_ecs_service" "service" {
